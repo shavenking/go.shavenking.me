@@ -7,7 +7,7 @@ import (
 
 func main() {
 	http.Handle("/", http.FileServer(http.Dir("./static")))
-	http.ListenAndServe(":80", nil)
+	fmt.Println("Starting Server...")
 
-	fmt.Println("Server started!")
+	http.ListenAndServe(":80", nil)
 }
