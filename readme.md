@@ -1,3 +1,7 @@
+# YO
+
+![Build Statue](https://travis-ci.org/shavenking/go.shavenking.me.svg?branch=master)
+
 ## Deploy
 
 1. Install go
