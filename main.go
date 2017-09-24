@@ -1,31 +1,34 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"github.com/russross/blackfriday"
 	"io/ioutil"
+	"fmt"
+	"html/template"
 )
 
-func renderMarkdown(response http.ResponseWriter, request *http.Request) {
-	content, err := ioutil.ReadFile("./static/" + request.URL.Path + ".md")
+func renderArticle(response http.ResponseWriter, request *http.Request) {
+	content, err := ioutil.ReadFile("." + request.URL.Path + ".md")
 	if err != nil {
-		content, err = ioutil.ReadFile("./static/index.md")
+		content, err = ioutil.ReadFile("./articles/index.md")
 		if err != nil {
 			http.NotFound(response, request)
 		}
 	}
 
+	t, _ := template.ParseFiles("./templates/article.html")
+
 	unsafe := blackfriday.MarkdownCommon(content)
 
 	response.Header().Set("Content-Type", "text/html; charset=utf-8")
-	response.Write(unsafe)
+	t.Execute(response, template.HTML(unsafe))
 }
 
 func main() {
 	h := http.NewServeMux()
 
-	h.HandleFunc("/", renderMarkdown)
+	h.HandleFunc("/articles/", renderArticle)
 
 	fmt.Println("Starting Server...")
 	http.ListenAndServe(":80", h)
