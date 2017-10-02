@@ -5,10 +5,10 @@ import (
 	"net/http"
 )
 
-type GitHub struct {}
+type GitHub struct{}
 
 type Repo struct {
-	Id int `json:"id"`
+	Id       int    `json:"id"`
 	FullName string `json:"full_name"`
 }
 

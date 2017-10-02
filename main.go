@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
-	"github.com/russross/blackfriday"
-	"io/ioutil"
 	"fmt"
+	"github.com/russross/blackfriday"
 	"html/template"
+	"io/ioutil"
+	"net/http"
 	"strings"
 )
 
