@@ -15,7 +15,7 @@
   <h2>ARTICLES</h2>
   <ul>
       {{range .}}
-          <li><a href="/articles/{{.}}">{{.}}</a></li>
+          <li><a href="/articles/{{.Name}}">{{.ModTime}} - {{.Name}}</a></li>
       {{end}}
   </ul>
 </body>

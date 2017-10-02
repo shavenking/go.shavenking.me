@@ -7,18 +7,27 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"sort"
 )
+
+type Article struct {
+	Name string
+	ModTime string
+}
 
 func renderIndex(response http.ResponseWriter, request *http.Request) {
 	t, _ := template.ParseFiles("./templates/index.html")
 
 	files, _ := ioutil.ReadDir("./articles")
 
-	articles := make([]string, len(files))
+	articles := make([]Article, len(files))
 
 	for i, file := range files {
-		articles[i] = strings.TrimSuffix(file.Name(), ".md")
+		articles[i].Name = strings.TrimSuffix(file.Name(), ".md")
+		articles[i].ModTime = file.ModTime().Format("2006-01-02")
 	}
+
+	sort.SliceStable(articles, func (i, j int) bool { return articles[i].ModTime > articles[j].ModTime })
 
 	response.Header().Set("Content-Type", "text/html; charset=utf-8")
 	t.Execute(response, articles)
