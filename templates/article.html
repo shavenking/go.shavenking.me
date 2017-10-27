@@ -2,12 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>SHAVENKING</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <style>
+    img {
+      max-width: 100%;
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(49, 57, 60, .4);
+    }
+
+    h1 {
+      line-height: 48px;
+      text-align: center;
+    }
+
+    h2 {
+      line-height: 48px;
+      text-align: center;
+    }
+
+    body {
+      color: #31393c;
+      padding: 0 20px;
+      line-height: 1.5;
+
+      /* These are technically the same, but use both */
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+
+      -ms-word-break: break-all;
+      /* This is the dangerous one in WebKit, as it breaks things wherever */
+      word-break: break-all;
+      /* Instead use this non-standard one: */
+      word-break: break-word;
+
+      /* Adds a hyphen where the word breaks, if supported (No Blink) */
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+    }
+
+    pre {
+      overflow-wrap: normal;
+      word-wrap: normal;
+
+      -ms-word-break: normal;
+      word-break: normal;
+      word-break: normal;
+
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    a, a:hover, a:visited, a:active {
+      color: #008dd5;
+      text-decoration: none;
+    }
+
+    table-responsive {
+      overflow-x: scroll;
+    }
+
+    .dark-demo {
+      color: #31393c;
+    }
+
+    .dark-blue-demo {
+      color: #456990;
+    }
+
+    .light-blue-demo {
+      color: #008dd5;
+    }
+
+    .red-demo {
+      color: #f45b69;
+    }
+
+    .green-demo {
+      color: #129490;
+    }
+  </style>
 </head>
 <body>
-  {{.}}
+  <div class="container">
+    <div class="box">
+      {{.}}
+    </div>
+  </div>
 </body>
 </html>

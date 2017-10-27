@@ -2,16 +2,18 @@ package main
 
 import (
 	"fmt"
-	"github.com/russross/blackfriday"
 	"html/template"
 	"io/ioutil"
 	"net/http"
-	"strings"
+	"regexp"
 	"sort"
+	"strings"
+
+	"github.com/russross/blackfriday"
 )
 
 type Article struct {
-	Name string
+	Name    string
 	ModTime string
 }
 
@@ -20,14 +22,18 @@ func renderIndex(response http.ResponseWriter, request *http.Request) {
 
 	files, _ := ioutil.ReadDir("./articles")
 
-	articles := make([]Article, len(files))
+	var articles []Article
 
-	for i, file := range files {
-		articles[i].Name = strings.TrimSuffix(file.Name(), ".md")
-		articles[i].ModTime = file.ModTime().Format("2006-01-02")
+	for _, file := range files {
+		if strings.HasSuffix(file.Name(), ".md") {
+			articles = append(articles, Article{
+				Name:    strings.TrimSuffix(file.Name(), ".md"),
+				ModTime: file.ModTime().Format("2006-01-02"),
+			})
+		}
 	}
 
-	sort.SliceStable(articles, func (i, j int) bool { return articles[i].ModTime > articles[j].ModTime })
+	sort.SliceStable(articles, func(i, j int) bool { return articles[i].ModTime > articles[j].ModTime })
 
 	response.Header().Set("Content-Type", "text/html; charset=utf-8")
 	t.Execute(response, articles)
@@ -44,6 +50,19 @@ func renderRepos(response http.ResponseWriter, request *http.Request) {
 }
 
 func renderArticle(response http.ResponseWriter, request *http.Request) {
+
+	isPic, err := regexp.MatchString(`\.(jpg|png|jpeg)$`, request.URL.Path)
+
+	if err != nil {
+		http.NotFound(response, request)
+		return
+	}
+
+	if isPic {
+		http.ServeFile(response, request, strings.TrimPrefix(request.URL.Path, "/"))
+		return
+	}
+
 	content, err := ioutil.ReadFile("." + request.URL.Path + ".md")
 	if err != nil {
 		content, err = ioutil.ReadFile("./articles/index.md")

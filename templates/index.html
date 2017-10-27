@@ -2,21 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SHAVENKING</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <style>
+    /* Coolors Exported Palette - coolors.co/31393c-456990-008dd5-f45b69-129490 */
+
+    /* HSL */
+    /* $color1: hsla(196%, 10%, 21%, 1);
+    $color2: hsla(211%, 35%, 42%, 1);
+    $color3: hsla(200%, 100%, 42%, 1);
+    $color4: hsla(355%, 87%, 66%, 1);
+    $color5: hsla(178%, 78%, 33%, 1); */
+
+    /* RGB */
+    /* $color1: rgba(49, 57, 60, 1);
+    $color2: rgba(69, 105, 144, 1);
+    $color3: rgba(0, 141, 213, 1);
+    $color4: rgba(244, 91, 105, 1);
+    $color5: rgba(18, 148, 144, 1); */
+
+    /* Hash */
+    /* $black: #31393c;
+    $darkblue: #456990;
+    $lightblue: #008dd5;
+    $red: #f45b69;
+    $green: #129490; */
+
+    body {
+      color: #31393c;
+      padding: 0 20px;
+      line-height: 1.5;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      color: #31393c;
+      text-align: center;
+    }
+
+    .article-list-box {
+      text-align: center;
+    }
+
+    .article-list-box a, .article-list-box a:hover, .article-list-box a:visited, .article-list-box a:active {
+      color: #008dd5;
+      text-decoration: none;
+    }
+
+    .article-list-box h2 {
+      line-height: 48px;
+    }
+
+    .article-list-box p {
+      color: #31393c;
+    }
+
+    .article-list-box hr {
+      display: block;
+      width: 30%;
+      height: 1px;
+      border: 0;
+      border-top: 2px solid #31393c;
+      margin: 1em auto;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
-  <ul>
-    <li><a href="/repos">GitHub Repos</a></li>
-  </ul>
-
-  <h2>ARTICLES</h2>
-  <ul>
+  <div class="container">
+    <div class="title-box">
+      <h1 class="title">ARTICLES</h1>
+    </div>
+    <div class="article-list-box">
       {{range .}}
-          <li><a href="/articles/{{.Name}}">{{.ModTime}} - {{.Name}}</a></li>
+        <a href="/articles/{{.Name}}">
+          <h2>{{.Name}}</h2>
+        </a>
+        <p>{{.ModTime}}</p>
+        <hr>
       {{end}}
-  </ul>
+    </div>
+  </div>
 </body>
 </html>
