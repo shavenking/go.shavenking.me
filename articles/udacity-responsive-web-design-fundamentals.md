@@ -41,3 +41,5 @@ RWD 主流設計模式：
 ## 更進一步
 
 預計把目前的 [shavenking.me](http://shavenking.me) 用剛學到的知識，設計一下。
+
+[Redesign shavenking.me After Udacity Course](/articles/redesign-shavenking-me-after-udacity-course)
