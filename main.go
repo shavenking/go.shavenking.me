@@ -51,7 +51,7 @@ func renderRepos(response http.ResponseWriter, request *http.Request) {
 
 func renderArticle(response http.ResponseWriter, request *http.Request) {
 
-	isPic, err := regexp.MatchString(`\.(jpg|png|jpeg)$`, request.URL.Path)
+	isPic, err := regexp.MatchString(`\.(jpg|png|jpeg|gif)$`, request.URL.Path)
 
 	if err != nil {
 		http.NotFound(response, request)
