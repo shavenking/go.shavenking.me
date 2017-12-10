@@ -104,7 +104,7 @@ $ git cat-file -p 99f1a6d12cb4b6f19c8655fca46c3ecf317074e0
 
 Tree 本身也是跟 Blob 一樣，用 SHA1 當檔名，然後儲存二進制內容，但不一樣的是，Blob 儲存了我們的「檔案內容」，而 Tree 則是儲存了我們的「檔名」，甚至還包含了另一個 Tree！如下圖所示：
 
-![](Git%20Internals/Git%20Internals/Artboard.png)
+![](./Git%20Internals/Git%20Internals/Artboard.png)
 
 如此一來，有了 Tree 這個物件，我們就可以解決前面提到的問題，我們可以儲存檔案的名稱、資料夾名稱、檔案權限等等。也因為 Tree 記錄了相關連的 Blob、Tree 的 SHA1，所以我們可以輕鬆地透過 Tree，找到子目錄、子子目錄的檔案內容、名稱。
 
@@ -130,11 +130,11 @@ awesome
 
 讓我們直接用圖來看看加上 Commit 之後的樣子：
 
-![](Git%20Internals/Git%20Internals/Artboard%201.png)
+![](./Git%20Internals/Git%20Internals/Artboard%201.png)
 
 如果我們再新增一個 Commit 呢？請看下圖：
 
-![](Git%20Internals/Git%20Internals/Artboard%202.png)
+![](./Git%20Internals/Git%20Internals/Artboard%202.png)
 
 如果用 git cat-file 可以看到檔案內容如下：
 
@@ -215,7 +215,7 @@ awesome again
 
 可以看到，Git 只是幫我們新增了一個「Branch」檔案，紀錄了 Commit 的 SHA1！如果用圖表示的話，就會長這樣：
 
-![](Git%20Internals/Git%20Internals/Artboard%203.png)
+![](./Git%20Internals/Git%20Internals/Artboard%203.png)
 
 那 Tag 呢？也是同樣的道理，我們直接用實例來看：
 
@@ -288,7 +288,7 @@ $ cat .git/refs/tags/v1
 
 可以清楚地看到，Branch 隨著我的新 Commit 而隨時更改，反之 Tag 則是待在原地呆呆地守住他的幸福。此時的圖長這樣：
 
-![](Git%20Internals/Git%20Internals/Artboard%204.png)
+![](./Git%20Internals/Git%20Internals/Artboard%204.png)
 
 由以上描述可見，一旦你在某個 Branch 有新的 Commit 時，Git 就會自動更新該 Branch 檔案，紀錄最新的 Commit。而 Tag 則是一旦指定 Commit 後，就不會因為有任何新 Commit 而影響。
 
@@ -308,7 +308,7 @@ ref: refs/heads/master
 
 就如同 Branch、Tag 的運作方式，HEAD 這個檔案僅僅是儲存了一個指標，告訴我們目前所在的位置，如果用圖表示就會長這樣：
 
-![](Git%20Internals/Git%20Internals/Artboard%205.png)
+![](./Git%20Internals/Git%20Internals/Artboard%205.png)
 
 ## 回想基本指令
 我們了解以上內容後，我們可以來回想一下日常生活中，我們用的 Git 指令。
