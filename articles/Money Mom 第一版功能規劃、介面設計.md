@@ -44,7 +44,7 @@
 
 一開始先把調色盤的顏色決定好，在一開始寫程式就有調色盤的概念，這樣未來如果有需要修改就會很方便。
 
-<a href='./Money%20Mom%20%E7%AC%AC%E4%B8%80%E7%89%88%E5%8A%9F%E8%83%BD%E8%A6%8F%E5%8A%83%E3%80%81%E4%BB%8B%E9%9D%A2%E8%A8%AD%E8%A8%88/palette.svg'>palette.svg</a>
+![](./Money%20Mom%20%E7%AC%AC%E4%B8%80%E7%89%88%E5%8A%9F%E8%83%BD%E8%A6%8F%E5%8A%83%E3%80%81%E4%BB%8B%E9%9D%A2%E8%A8%AD%E8%A8%88/21D60A10-E69D-4AE6-A8BE-3EFCBF4FFDC3.png)
 
 分別為下列幾種顏色：
 
