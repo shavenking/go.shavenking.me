@@ -79,12 +79,39 @@ func renderArticle(response http.ResponseWriter, request *http.Request) {
 	t.Execute(response, template.HTML(unsafe))
 }
 
+func renderResume(response http.ResponseWriter, request *http.Request) {
+	isPic, err := regexp.MatchString(`\.(jpg|png|jpeg|gif)$`, request.URL.Path)
+
+	if err != nil {
+		http.NotFound(response, request)
+		return
+	}
+
+	if isPic {
+		http.ServeFile(response, request, strings.TrimPrefix(request.URL.Path, "/"))
+		return
+	}
+
+	content, err := ioutil.ReadFile("resume.md")
+	if err != nil {
+		http.NotFound(response, request)
+	}
+
+	t, _ := template.ParseFiles("./templates/resume.html")
+
+	unsafe := blackfriday.MarkdownCommon(content)
+
+	response.Header().Set("Content-Type", "text/html; charset=utf-8")
+	t.Execute(response, template.HTML(unsafe))
+}
+
 func main() {
 	h := http.NewServeMux()
 
 	h.HandleFunc("/", renderIndex)
 	h.HandleFunc("/repos/", renderRepos)
 	h.HandleFunc("/articles/", renderArticle)
+	h.HandleFunc("/resume/", renderResume)
 
 	fmt.Println("Starting Server...")
 	http.ListenAndServe(":80", h)
