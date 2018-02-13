@@ -8,6 +8,11 @@
 * 網站：shavenking.me
 * 居住地：臺灣 - 臺南
 
+## 近期成就
+
+- [2018 iT 邦幫忙鐵人賽 - 團體組 20 人完賽](https://ithelp.ithome.com.tw/ironman/signup/team/17)
+- [2018 iT 邦幫忙鐵人賽 - 個人 Software Development 組完賽](https://ithelp.ithome.com.tw/users/20107332/ironman/1475)
+
 ## 經歷
 ### Freelancer - 全端工程師
 *2015 - 現在*
